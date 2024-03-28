@@ -14,10 +14,11 @@ export default async function PaintingsPage({
   return (
     <>
       <Header />
-      {arts.map((art) => (
+      {arts.map((art, index) => (
         <img
           src={art.image_url}
           alt={art.title}
+          key={index}
           className="mr-4"
           width={320}
           height={320}
