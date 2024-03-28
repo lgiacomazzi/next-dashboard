@@ -7,8 +7,83 @@ import {
   LatestInvoiceRaw,
   User,
   Revenue,
+  Art,
 } from './definitions';
 import { formatCurrency } from './utils';
+
+export async function fetchArts() {
+  try {
+    const data = await sql<Art>`
+      SELECT
+        id,
+        title,
+        description,
+        dimensions,
+        category,
+        year,
+        image_url
+      FROM arts
+      ORDER BY year DESC
+    `;
+
+    const arts = data.rows;
+    console.log(arts);
+    return arts;
+  } catch (err) {
+    console.error('Database Error:', err);
+    throw new Error('Failed to fetch all arts.');
+  }
+}
+
+export async function fetchYearlyPaintings(query: string) {
+  try {
+    const data = await sql<Art>`
+      SELECT
+        id,
+        title,
+        description,
+        dimensions,
+        category,
+        year,
+        image_url
+      FROM arts
+      WHERE year = ${query}
+      ORDER BY year DESC
+    `;
+
+    const arts = data.rows;
+    console.log(arts);
+    return arts;
+  } catch (err) {
+    console.error('Database Error:', err);
+    throw new Error('Failed to fetch all arts.');
+  }
+}
+
+export async function fetchHomeArts() {
+  try {
+    const data = await sql<Art>`
+      SELECT
+        id,
+        title,
+        description,
+        dimensions,
+        category,
+        year,
+        image_url
+      FROM arts
+      ORDER BY year DESC
+      LIMIT 5
+    `;
+
+    const arts = data.rows;
+    console.log(arts);
+    return arts;
+  } catch (err) {
+    console.error('Database Error:', err);
+    throw new Error('Failed to fetch all arts.');
+  }
+}
 
 export async function fetchRevenue() {
   // Add noStore() here to prevent the response from being cached.

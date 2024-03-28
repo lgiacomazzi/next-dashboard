@@ -1,5 +1,6 @@
 import '@/app/ui/global.css';
-import { inter } from '@/app/ui/fonts';
+import Header from '@/app/ui/header/header';
+import { ibm_Plex_Mono } from '@/app/ui/fonts';
 
 export default function RootLayout({
   children,
@@ -8,7 +9,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${inter.className} antialiased`}>{children}</body>
+      <body
+        className={`${ibm_Plex_Mono.className} overflow-hidden antialiased`}
+      >
+        {children}
+      </body>
     </html>
   );
 }
