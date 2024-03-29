@@ -17,7 +17,7 @@ export default function HeaderDropdown({
   return (
     <div className="dropdown text-sm">
       <button
-        className="uppercase"
+        className="border-b border-transparent uppercase hover:border-black"
         onClick={() => setIsDropdownVisible(!isDropdownVisible)}
       >
         {children}

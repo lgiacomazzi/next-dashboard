@@ -2,28 +2,19 @@ import { PaintingsPageParams } from '@/app/lib/definitions';
 import { fetchYearlyPaintings } from '@/app/lib/data';
 import Image from 'next/image';
 import Header from '@/app/ui/header/header';
+import PageCarousel from '@/app/ui/carousel/page-carousel';
 
 export default async function PaintingsPage({
   params,
 }: {
   params: PaintingsPageParams;
 }) {
-  const query = params.year.toString();
+  const query = params.year;
   const arts = await fetchYearlyPaintings(query);
 
   return (
-    <>
-      <Header />
-      {arts.map((art, index) => (
-        <img
-          src={art.image_url}
-          alt={art.title}
-          key={index}
-          className="mr-4"
-          width={320}
-          height={320}
-        />
-      ))}
-    </>
+    <main className="h-screen w-screen">
+      <PageCarousel arts={arts} />
+    </main>
   );
 }

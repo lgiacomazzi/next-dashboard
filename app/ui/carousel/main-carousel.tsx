@@ -1,42 +1,18 @@
 'use client';
 
 import { Art } from '@/app/lib/definitions';
-import clsx from 'clsx';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
-import { ChevronRightIcon, ChevronLeftIcon } from '@heroicons/react/24/outline';
+import { CarouselButton } from './carousel-button';
 
 export function ImageTag({ art }: any) {
   return (
     <div className="absolute bottom-0 left-0 z-10 w-full bg-black p-2.5 text-sm uppercase text-white md:w-fit">
       <Link href={`/${art.category}s/${art.year}`}>
-        {art.category}s/{art.year}
+        <span className="opacity-60">{art.category}s</span> / {art.year}
       </Link>
     </div>
-  );
-}
-
-export function CarouselButton({ direction, onClick }: any) {
-  return (
-    <button
-      onClick={onClick}
-      className={clsx(
-        'absolute bottom-1/2 z-10 hidden bg-black p-4 text-sm text-white md:block',
-        {
-          'right-10': direction == 'right',
-        },
-        {
-          'left-10': direction == 'left',
-        },
-      )}
-    >
-      {direction == 'right' ? (
-        <ChevronRightIcon className="h-6 w-6 text-white" />
-      ) : (
-        <ChevronLeftIcon className="h-6 w-6 text-white" />
-      )}
-    </button>
   );
 }
 
@@ -72,21 +48,22 @@ export const MainCarousel = ({ arts }: any) => {
       <ImageTag art={arts[currentIndex]} />
 
       <div className="relative h-full w-full">
-        {arts.map((art: Art, index: number) => (
-          <motion.img
-            key={index}
-            src={art.image_url}
-            alt={`Image ${index + 1}`}
-            className="absolute left-0 top-0 h-full w-full object-cover object-center opacity-0"
-            style={{
-              zIndex: index === currentIndex ? 1 : 0,
-            }}
-            animate={{
-              opacity: index === currentIndex ? 1 : 0,
-            }}
-            transition={{ duration: 0.5 }}
-          />
-        ))}
+        {arts &&
+          arts.map((art: Art, index: number) => (
+            <motion.img
+              key={index}
+              src={art.image_url}
+              alt={`Image ${index + 1}`}
+              className="absolute left-0 top-0 h-full w-full object-cover object-center opacity-0"
+              style={{
+                zIndex: index === currentIndex ? 1 : 0,
+              }}
+              animate={{
+                opacity: index === currentIndex ? 1 : 0,
+              }}
+              transition={{ duration: 0.5 }}
+            />
+          ))}
       </div>
     </div>
   );

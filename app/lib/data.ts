@@ -36,6 +36,7 @@ export async function fetchArts() {
 }
 
 export async function fetchYearlyPaintings(query: string) {
+  console.log(query);
   try {
     const data = await sql<Art>`
       SELECT
@@ -47,7 +48,7 @@ export async function fetchYearlyPaintings(query: string) {
         year,
         image_url
       FROM arts
-      WHERE year = ${query}
+      WHERE year LIKE ${query}
       ORDER BY year DESC
     `;
 
@@ -72,8 +73,7 @@ export async function fetchHomeArts() {
         year,
         image_url
       FROM arts
-      ORDER BY year DESC
-      LIMIT 5
+      ORDER BY RANDOM()
     `;
 
     const arts = data.rows;

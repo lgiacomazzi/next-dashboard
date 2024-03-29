@@ -31,7 +31,13 @@ async function seedArts(client) {
         (art) => client.sql`
         INSERT INTO arts (id, image_url, title, dimensions, description, category, year)
         VALUES (${art.id}, ${art.image_url}, ${art.title}, ${art.dimensions},  ${art.description},  ${art.category}, ${art.year})
-        ON CONFLICT (id) DO NOTHING;
+        ON CONFLICT (id) DO UPDATE SET
+        image_url = EXCLUDED.image_url,
+        title = EXCLUDED.title,
+        dimensions = EXCLUDED.dimensions,
+        description = EXCLUDED.description,
+        category = EXCLUDED.category,
+        year = EXCLUDED.year;
       `,
       ),
     );

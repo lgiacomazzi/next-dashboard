@@ -12,6 +12,7 @@ export default function RootLayout({
       <body
         className={`${ibm_Plex_Mono.className} overflow-hidden antialiased`}
       >
+        <Header />
         {children}
       </body>
     </html>
