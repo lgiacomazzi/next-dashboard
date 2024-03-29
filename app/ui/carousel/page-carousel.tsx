@@ -6,12 +6,11 @@ import { useState } from 'react';
 import { Art } from '@/app/lib/definitions';
 import Image from 'next/image';
 
-export function ArtDisplay({ art, index }: any) {
+export function ArtDisplay({ art, key }: any) {
   return (
-    <div className="mb-12 md:mb-0 md:p-12" key={index}>
+    <div className="mb-12 md:mb-0 md:p-12" key={key}>
       <img
         src={art.image_url}
-        alt={`Image ${index + 1}`}
         className="top-0block left-0 h-fit w-full object-cover object-center"
       />
       <div className="px-8 py-4 md:p-0">
@@ -44,7 +43,7 @@ export default function PageCarousel({ arts }: any) {
       <CarouselButton direction="right" onClick={goToNext} />
       {arts.length > 0
         ? arts.map((art: Art, index: number) => (
-            <ArtDisplay art={art} index={index} />
+            <ArtDisplay art={art} key={index} />
           ))
         : 'No arts found'}
     </div>
