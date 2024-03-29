@@ -6,20 +6,21 @@ import { useState } from 'react';
 import { Art } from '@/app/lib/definitions';
 import Image from 'next/image';
 
-export function ArtDisplay({ art, key }: any) {
+export function ArtDisplay({ art }: any) {
   return (
-    <div className="mb-12 md:mb-0 md:p-12" key={key}>
+    <div className="mb-12 md:mb-0 md:p-12">
       <Image
         src={art.image_url}
         alt={art.description}
         className="w-full object-cover object-center"
         width={1920}
-        height={10800}
+        height={1080}
       />
-      <div className="px-8 py-4 text-xs md:p-0	">
-        <p>{art.title}</p>
-        <p>{art.description}</p>
-        <p>{art.dimensions}</p>
+      <div className="p-4 text-xs md:p-0">
+        <p className="font-bold uppercase">{art.title}</p>
+        <p>
+          {art.description}, {art.dimensions}, {art.year}
+        </p>
       </div>
     </div>
   );

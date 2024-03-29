@@ -2,6 +2,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { fetchHomeArts } from '@/app/lib/data';
 
+import 'swiper/css';
+
 export default async function Page() {
   const arts = await fetchHomeArts();
 

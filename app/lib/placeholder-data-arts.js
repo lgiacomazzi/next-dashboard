@@ -160,13 +160,13 @@
       description: 'tinta acrilica sobre canvas',
       dimensions: '200x170cm',
       year: '2020',
-      category: 'painting '
+      category: 'painting'
   },
   {
       id: '86e5b0c4-42c4-4749-9de2-7e5fd9066b27',
       image_url: '/arts/002.jpg',
       title: 'contraponto visual',
-      description: 'tinta acrilica  sobre canvas',
+      description: 'tinta acrilica sobre canvas',
       dimensions: '200x170cm',
       year: '2020',
       category: 'painting'
@@ -182,12 +182,12 @@
   },
   {
       id: 'c86d8eb6-5008-4d88-ad0f-719f9fb98015',
-      image_url: '/arts/...',
+      image_url: '/arts/final.jpg',
       title: 'o que eles querem',
       description: 'tinta acrilica sobre canvas',
       dimensions: '155x110cm',
       year: '2020',
-      category: 'painting '
+      category: 'painting'
   },
   {
       id: '8e3fcbd3-ae61-4ce4-9ec9-82f71a8a1bfd',

@@ -5,6 +5,7 @@ import HeaderDropdown from './header-dropdown';
 import Image from 'next/image';
 import { Bars3Icon } from '@heroicons/react/24/outline';
 import JoanaBrum from '@/public/joana_brum_brasil.svg';
+import clsx from 'clsx';
 
 const links = [
   { name: 'Desenhos', href: '/drawings' },
@@ -61,9 +62,13 @@ export function MobileBarsButton() {
   );
 }
 
-export default function Header() {
+export default function Header({ theme }: any) {
   return (
-    <header className="fixed z-10 flex w-full bg-gradient-to-b from-slate-100 px-5 py-5 invert">
+    <header
+      className={clsx('fixed z-10 flex w-full px-5 py-5', {
+        'bg-gradient-to-b from-slate-100 invert': theme == 'dark',
+      })}
+    >
       <MainLogo />
       <DesktopHeaderLinks />
       <MobileBarsButton />

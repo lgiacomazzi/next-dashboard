@@ -10,7 +10,7 @@ export function ImageTag({ art }: any) {
   return (
     <div className="absolute bottom-0 left-0 z-10 w-full bg-black p-2.5 text-sm uppercase text-white md:w-fit">
       <Link href={`/${art.category}s/${art.year}`}>
-        <span className="opacity-60">{art.category}s</span> / {art.year}
+        <span className="opacity-60">{art.title}</span> / {art.year}
       </Link>
     </div>
   );

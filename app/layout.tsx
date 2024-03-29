@@ -9,10 +9,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body
-        className={`${ibm_Plex_Mono.className} overflow-hidden antialiased`}
-      >
-        <Header />
+      <body className={`${ibm_Plex_Mono.className} antialiased`}>
         {children}
       </body>
     </html>

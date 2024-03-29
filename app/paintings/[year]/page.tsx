@@ -13,8 +13,12 @@ export default async function PaintingsPage({
   const arts = await fetchYearlyPaintings(query);
 
   return (
-    <main className="h-screen w-screen">
-      <PageCarousel arts={arts} />
-    </main>
+    <>
+      <Header theme="light" />
+      <main className="h-screen w-screen">
+        <PageCarousel arts={arts} />
+        {/* <Footer/> */}
+      </main>
+    </>
   );
 }
