@@ -12,10 +12,6 @@ export type Art = {
   image_url: string;
 };
 
-export type PaintingsPageParams = {
-  year: string;
-};
-
 export type User = {
   id: string;
   name: string;

@@ -38,7 +38,7 @@ export function HeaderLink({ children, href }: any) {
 
 export function DesktopHeaderLinks({ children, href }: any) {
   return (
-    <div className="hidden flex-row items-center gap-10 pr-4 md:flex">
+    <nav className="hidden flex-row items-center gap-10 pr-4 md:flex">
       <HeaderDropdown>Pinturas</HeaderDropdown>
       {links.map((link) => {
         return (
@@ -50,7 +50,7 @@ export function DesktopHeaderLinks({ children, href }: any) {
       <Link className="w-4" href="https://www.instagram.com/joanasbrum/">
         <img src="/instagram.svg" className="h-4 w-4" />
       </Link>
-    </div>
+    </nav>
   );
 }
 

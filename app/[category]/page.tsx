@@ -2,7 +2,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { fetchHomeArts } from '@/app/lib/data';
 
-export default async function Page() {
+export default async function Page({ params }: any) {
+  console.log(params);
   const arts = await fetchHomeArts();
 
   return (
