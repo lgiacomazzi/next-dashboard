@@ -9,11 +9,14 @@ import Image from 'next/image';
 export function ArtDisplay({ art, key }: any) {
   return (
     <div className="mb-12 md:mb-0 md:p-12" key={key}>
-      <img
+      <Image
         src={art.image_url}
-        className="top-0block left-0 h-fit w-full object-cover object-center"
+        alt={art.description}
+        className="w-full object-cover object-center"
+        width={1920}
+        height={10800}
       />
-      <div className="px-8 py-4 md:p-0">
+      <div className="px-8 py-4 text-xs md:p-0	">
         <p>{art.title}</p>
         <p>{art.description}</p>
         <p>{art.dimensions}</p>

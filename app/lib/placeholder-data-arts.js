@@ -30,7 +30,7 @@
   {
       id: '66aa28d8-6856-4a08-9597-8abf738fe6be',
       image_url: '/arts/DSC_0149 (2).JPG',
-      title: 'auto- psicodelia generalizada',
+      title: 'auto - psicodelia generalizada',
       description: 'tinta acrilica e caneta posca sobre chapa de alumínio',
       dimensions: '100x100cm',
       year: '2018',

@@ -4,6 +4,7 @@ import Link from 'next/link';
 import HeaderDropdown from './header-dropdown';
 import Image from 'next/image';
 import { Bars3Icon } from '@heroicons/react/24/outline';
+import JoanaBrum from '@/public/joana_brum_brasil.svg';
 
 const links = [
   { name: 'Desenhos', href: '/drawings' },
@@ -17,12 +18,7 @@ export function MainLogo() {
   return (
     <div className="w-full">
       <Link href="/">
-        <Image
-          width="150"
-          height="50"
-          src="joana_brum_brasil.svg"
-          alt="Joana Brum Brasil"
-        />
+        <JoanaBrum />
       </Link>
     </div>
   );

@@ -27,7 +27,7 @@ export async function fetchArts() {
     `;
 
     const arts = data.rows;
-    console.log(arts);
+    // console.log(arts);
     return arts;
   } catch (err) {
     console.error('Database Error:', err);
@@ -53,7 +53,7 @@ export async function fetchYearlyPaintings(query: string) {
     `;
 
     const arts = data.rows;
-    console.log(arts);
+    // console.log(arts);
     return arts;
   } catch (err) {
     console.error('Database Error:', err);
@@ -77,7 +77,7 @@ export async function fetchHomeArts() {
     `;
 
     const arts = data.rows;
-    console.log(arts);
+    // console.log(arts);
     return arts;
   } catch (err) {
     console.error('Database Error:', err);
