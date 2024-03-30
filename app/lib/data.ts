@@ -8,6 +8,7 @@ import {
   User,
   Revenue,
   Art,
+  Category,
 } from './definitions';
 import { formatCurrency } from './utils';
 
@@ -23,7 +24,6 @@ export async function fetchArts() {
         year,
         image_url
       FROM arts
-      ORDER BY year DESC
     `;
 
     const arts = data.rows;
@@ -36,7 +36,6 @@ export async function fetchArts() {
 }
 
 export async function fetchYearlyPaintings(query: string) {
-  console.log(query);
   try {
     const data = await sql<Art>`
       SELECT
@@ -73,7 +72,8 @@ export async function fetchHomeArts() {
         year,
         image_url
       FROM arts
-      ORDER BY RANDOM()
+      WHERE image_url NOT LIKE '/arts/'
+      ORDER BY year DESC
       LIMIT 15
     `;
 
@@ -86,6 +86,27 @@ export async function fetchHomeArts() {
   }
 }
 
+export async function fetchCategories() {
+  try {
+    const data = await sql<Category>`
+      SELECT 
+        category as name, 
+        ARRAY_AGG(DISTINCT year ORDER BY year DESC) AS years
+      FROM arts
+      GROUP BY category
+      ORDER BY category DESC
+    `;
+
+    const categories = data.rows;
+    // console.log(categories);
+    return categories;
+  } catch (err) {
+    console.error('Database Error:', err);
+    throw new Error('Failed to fetch art categories.');
+  }
+}
+
+// DELETE
 export async function fetchRevenue() {
   // Add noStore() here to prevent the response from being cached.
   // This is equivalent to in fetch(..., {cache: 'no-store'}).

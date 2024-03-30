@@ -4,7 +4,6 @@ import { fetchHomeArts } from '@/app/lib/data';
 import Header from '../ui/header/header';
 
 export default async function Page({ params }: any) {
-  console.log(params);
   const arts = await fetchHomeArts();
 
   return (

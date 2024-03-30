@@ -4,7 +4,6 @@ import { MainCarousel } from '@/app/ui/carousel/main-carousel';
 
 export default async function Page() {
   const arts = await fetchHomeArts();
-  console.log(arts);
 
   return (
     <body className="overflow-hidden">

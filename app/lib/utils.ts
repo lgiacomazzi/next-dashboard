@@ -67,3 +67,10 @@ export const generatePagination = (currentPage: number, totalPages: number) => {
     totalPages,
   ];
 };
+
+export const artTranslations: { [key: string]: string } = {
+  painting: 'Pinturas',
+  drawing: 'Desenhos',
+  illustration: 'Ilustrações',
+  collage: 'Colagens',
+};

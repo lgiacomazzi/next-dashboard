@@ -15,6 +15,7 @@ export function ArtDisplay({ art }: any) {
         className="w-full bg-slate-200 object-cover object-center md:h-[28rem] md:max-h-fit md:w-fit md:max-w-fit"
         width={1920}
         height={1080}
+        priority
       />
       <div className="p-4 text-xs md:px-0">
         <p className="font-bold uppercase">{art.title}</p>
@@ -38,9 +39,9 @@ export default function PageCarousel({ arts }: any) {
   const goToNext = () => {
     const isLastItem = currentIndex === arts.length - 1;
     const newIndex = isLastItem ? 0 : currentIndex + 1;
-    console.log('click');
     setCurrentIndex(newIndex);
   };
+
   return (
     <div className="flex w-fit flex-col overflow-x-scroll pt-28 md:h-screen md:flex-row md:gap-8 md:px-5">
       <CarouselButton direction="left" onClick={goToPrevious} />
