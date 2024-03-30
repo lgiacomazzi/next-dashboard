@@ -49,7 +49,7 @@ export async function fetchYearlyPaintings(query: string) {
         image_url
       FROM arts
       WHERE year LIKE ${query}
-      ORDER BY year DESC
+      ORDER BY title DESC
     `;
 
     const arts = data.rows;
@@ -74,6 +74,7 @@ export async function fetchHomeArts() {
         image_url
       FROM arts
       ORDER BY RANDOM()
+      LIMIT 15
     `;
 
     const arts = data.rows;

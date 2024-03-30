@@ -6,11 +6,28 @@ import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { CarouselButton } from './carousel-button';
 
+const artTranslations: { [key: string]: string } = {
+  painting: 'Pinturas',
+  drawing: 'Desenhos',
+  illustrations: 'Ilustrações',
+  collage: 'Colagens',
+};
+
+const generateLink = (category: string, year: string): string => {
+  if (category === 'painting') {
+    return `/${category}s/${year}`;
+  }
+  return `/${category}s`;
+};
+
 export function ImageTag({ art }: any) {
   return (
-    <div className="absolute bottom-0 left-0 z-10 w-full bg-black p-2.5 text-sm uppercase text-white md:w-fit">
-      <Link href={`/${art.category}s/${art.year}`}>
-        <span className="opacity-60">{art.title}</span> / {art.year}
+    <div className="absolute bottom-0 left-0 z-10 w-full bg-zinc-950 p-2.5 text-sm uppercase text-white md:w-fit">
+      <Link href={generateLink(art.category, art.year)}>
+        <span className="opacity-60">
+          {art.title} / {artTranslations[art.category]}
+        </span>{' '}
+        / {art.year}
       </Link>
     </div>
   );
@@ -41,7 +58,7 @@ export const MainCarousel = ({ arts }: any) => {
   }, [currentIndex]); // Dependency array ensures the interval is reset if currentIndex changes
 
   return (
-    <div className="carousel h-full w-full">
+    <div className="carousel h-full w-full bg-zinc-950">
       <CarouselButton direction="left" onClick={goToPrevious} />
       <CarouselButton direction="right" onClick={goToNext} />
 

@@ -8,15 +8,15 @@ import Image from 'next/image';
 
 export function ArtDisplay({ art }: any) {
   return (
-    <div className="mb-12 md:mb-0 md:p-12">
+    <div className="mb-12 md:mb-0">
       <Image
         src={art.image_url}
         alt={art.description}
-        className="w-full object-cover object-center"
+        className="w-full bg-slate-200 object-cover object-center md:h-[28rem] md:max-h-fit md:w-fit md:max-w-fit"
         width={1920}
         height={1080}
       />
-      <div className="p-4 text-xs md:p-0">
+      <div className="p-4 text-xs md:px-0">
         <p className="font-bold uppercase">{art.title}</p>
         <p>
           {art.description}, {art.dimensions}, {art.year}
@@ -42,7 +42,7 @@ export default function PageCarousel({ arts }: any) {
     setCurrentIndex(newIndex);
   };
   return (
-    <div className="flex h-screen w-screen flex-col overflow-x-scroll pt-24 md:flex-row">
+    <div className="flex w-fit flex-col overflow-x-scroll pt-28 md:h-screen md:flex-row md:gap-8 md:px-5">
       <CarouselButton direction="left" onClick={goToPrevious} />
       <CarouselButton direction="right" onClick={goToNext} />
       {arts.length > 0

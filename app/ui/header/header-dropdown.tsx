@@ -24,7 +24,7 @@ export default function HeaderDropdown({
         {selectedYear && `/${selectedYear}`}
       </button>
       {isDropdownVisible && (
-        <div className="absolute flex flex-col gap-2 bg-black p-4 text-center text-white">
+        <div className="absolute flex flex-col gap-2 bg-zinc-950 p-4 text-center text-white">
           {years.map((year) => (
             <Link
               href={`/paintings/${year.toString()}`}

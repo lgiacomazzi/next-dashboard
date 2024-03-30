@@ -1,6 +1,5 @@
 import '@/app/ui/global.css';
-import Header from '@/app/ui/header/header';
-import { ibm_Plex_Mono } from '@/app/ui/fonts';
+import { ibm_Plex_Mono } from './ui/fonts';
 
 export default function RootLayout({
   children,
@@ -8,10 +7,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className={`${ibm_Plex_Mono.className} antialiased`}>
-        {children}
-      </body>
+    <html lang="en" className={ibm_Plex_Mono.className}>
+      <body>{children}</body>
     </html>
   );
 }

@@ -11,7 +11,6 @@ export type Art = {
   year: string;
   image_url: string;
 };
-
 export type User = {
   id: string;
   name: string;

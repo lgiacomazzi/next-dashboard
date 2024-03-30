@@ -7,11 +7,11 @@ export default async function Page() {
   console.log(arts);
 
   return (
-    <>
+    <body className="overflow-hidden">
       <Header theme="dark" />
       <main className="h-screen overflow-hidden">
         <MainCarousel arts={arts} />
       </main>
-    </>
+    </body>
   );
 }

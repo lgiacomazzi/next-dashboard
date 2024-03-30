@@ -17,11 +17,9 @@ const links = [
 
 export function MainLogo() {
   return (
-    <div className="w-full">
-      <Link href="/">
-        <JoanaBrum />
-      </Link>
-    </div>
+    <Link href="/">
+      <JoanaBrum className="w-48 text-zinc-950" />
+    </Link>
   );
 }
 
@@ -38,7 +36,7 @@ export function HeaderLink({ children, href }: any) {
 
 export function DesktopHeaderLinks({ children, href }: any) {
   return (
-    <nav className="hidden flex-row items-center gap-10 pr-4 md:flex">
+    <nav className="hidden w-full flex-row items-center justify-end gap-8 pr-4 md:flex">
       <HeaderDropdown>Pinturas</HeaderDropdown>
       {links.map((link) => {
         return (
@@ -65,8 +63,8 @@ export function MobileBarsButton() {
 export default function Header({ theme }: any) {
   return (
     <header
-      className={clsx('fixed z-10 flex w-full px-5 py-5', {
-        'bg-gradient-to-b from-slate-100 invert': theme == 'dark',
+      className={clsx('fixed z-10 flex w-full justify-between p-5', {
+        'bg-gradient-to-b from-zinc-100 invert': theme == 'dark',
       })}
     >
       <MainLogo />
