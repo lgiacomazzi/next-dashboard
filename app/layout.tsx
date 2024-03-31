@@ -7,8 +7,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={ibm_Plex_Mono.className}>
-      <body>{children}</body>
+    <html lang="en">
+      <body className={ibm_Plex_Mono.className}>{children}</body>
     </html>
   );
 }

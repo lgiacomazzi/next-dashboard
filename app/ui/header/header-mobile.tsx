@@ -7,7 +7,6 @@ import clsx from 'clsx';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
-import { MainLogo } from './header';
 
 export function ButtonMenu({ category }: { category: Category }) {
   return (
@@ -57,18 +56,24 @@ export default function MobileMenu({ categories }: { categories: Category[] }) {
             <XMarkIcon className="h-6 w-6" />
           </button>
         </div>
-        {categories.map((category, index) => (
-          <nav key={index}>
-            <ButtonMenu category={category} />
-            {category.years.length > 1 && (
-              <ul key={index}>
-                {category.years.map((year, index) => (
-                  <YearButtonMenu key={index} category={category} year={year} />
-                ))}
-              </ul>
-            )}
-          </nav>
-        ))}
+        <nav>
+          {categories.map((category, index) => (
+            <div key={index}>
+              <ButtonMenu category={category} />
+              {category.years.length > 1 && (
+                <ul key={index}>
+                  {category.years.map((year, index) => (
+                    <YearButtonMenu
+                      key={index}
+                      category={category}
+                      year={year}
+                    />
+                  ))}
+                </ul>
+              )}
+            </div>
+          ))}
+        </nav>
       </div>
     </div>
   );

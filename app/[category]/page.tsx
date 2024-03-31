@@ -1,27 +1,8 @@
-import Link from 'next/link';
-import Image from 'next/image';
 import { fetchHomeArts } from '@/app/lib/data';
-import Header from '../ui/header/header';
+import PageCarousel from '@/app/ui/carousel/page-carousel-v2';
 
-export default async function Page({ params }: any) {
+export default async function Page() {
   const arts = await fetchHomeArts();
 
-  return (
-    <>
-      <Header theme="light" />
-      <main className="pt-20">
-        <p>{params.category} Page</p>
-        {arts.map((art, index) => (
-          <img
-            src={art.image_url}
-            alt={art.title}
-            key={index}
-            className="mr-4"
-            width={320}
-            height={320}
-          />
-        ))}
-      </main>
-    </>
-  );
+  return <PageCarousel arts={arts} />;
 }

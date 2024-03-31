@@ -3,9 +3,11 @@
 import { Art } from '@/app/lib/definitions';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import { CarouselButton } from './carousel-button';
 import { artTranslations } from '@/app/lib/utils';
+import clsx from 'clsx';
 
 const generateLink = (category: string, year: string): string => {
   if (category === 'painting') {
@@ -16,7 +18,7 @@ const generateLink = (category: string, year: string): string => {
 
 export function ImageTag({ art }: any) {
   return (
-    <div className="fixed bottom-0 left-0 z-10 w-full bg-zinc-950 p-2.5 text-sm uppercase text-white md:w-fit">
+    <div className="fixed bottom-0 left-0 z-10 w-full bg-zinc-950 p-2.5 text-sm uppercase text-white md:bottom-10 md:left-10 md:w-fit">
       <Link href={generateLink(art.category, art.year)}>
         <span className="opacity-60">
           {art.title} / {artTranslations[art.category]}
@@ -27,8 +29,46 @@ export function ImageTag({ art }: any) {
   );
 }
 
-export const MainCarousel = ({ arts }: any) => {
+export function MainCarouselImage({
+  art,
+  index,
+  currentIndex,
+}: {
+  art: Art;
+  index: number;
+  currentIndex: number;
+}) {
+  return (
+    <Link
+      href={generateLink(art.category, art.year)}
+      className="absolute h-full w-full"
+    >
+      <Image
+        src={art.image_url}
+        alt={art.title}
+        priority={index === 0}
+        className={clsx(
+          'h-full w-full object-cover object-center opacity-0 transition',
+          {
+            'scale-105 opacity-100': index === currentIndex,
+          },
+        )}
+        fill
+      />
+    </Link>
+  );
+}
+
+export const MainCarousel = ({ arts }: { arts: Art[] }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      goToNext();
+    }, 4000);
+    // Clear the interval on component unmount
+    return () => clearInterval(timer);
+  }, [currentIndex]); // Dependency array ensures the interval is reset if currentIndex changes
 
   const goToPrevious = () => {
     const isFirstItem = currentIndex === 0;
@@ -42,38 +82,20 @@ export const MainCarousel = ({ arts }: any) => {
     setCurrentIndex(newIndex);
   };
 
-  useEffect(() => {
-    const timer = setInterval(() => {
-      goToNext();
-    }, 4000);
-    // Clear the interval on component unmount
-    return () => clearInterval(timer);
-  }, [currentIndex]); // Dependency array ensures the interval is reset if currentIndex changes
-
   return (
     <div className="carousel h-full w-full bg-black">
       <CarouselButton direction="left" onClick={goToPrevious} />
       <CarouselButton direction="right" onClick={goToNext} />
-
       <ImageTag art={arts[currentIndex]} />
-
-      <div className="relative h-full w-full">
+      <div className="relative h-full w-full overflow-hidden">
         {arts &&
           arts.map((art: Art, index: number) => (
-            <Link href={generateLink(art.category, art.year)} key={index}>
-              <motion.img
-                src={art.image_url}
-                alt={`Image ${index + 1}`}
-                className="absolute left-0 top-0 h-full w-full object-cover object-center opacity-0"
-                style={{
-                  zIndex: index === currentIndex ? 1 : 0,
-                }}
-                animate={{
-                  opacity: index === currentIndex ? 1 : 0,
-                }}
-                transition={{ duration: 0.5 }}
-              />
-            </Link>
+            <MainCarouselImage
+              key={index}
+              art={art}
+              index={index}
+              currentIndex={currentIndex}
+            />
           ))}
       </div>
     </div>

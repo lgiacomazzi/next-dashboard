@@ -8,7 +8,7 @@ import MobileMenu from './header-mobile';
 export function MainLogo() {
   return (
     <Link href="/">
-      <JoanaBrum className="h-16 max-h-16 text-zinc-950" />
+      <JoanaBrum className="h-12 max-h-16 text-zinc-950" />
     </Link>
   );
 }
@@ -21,7 +21,7 @@ export default async function Header({ theme }: { theme: 'light' | 'dark' }) {
       className={clsx(
         'fixed z-10 flex w-full items-center justify-between p-5',
         {
-          'bg-gradient-to-b from-zinc-100 invert': theme == 'dark',
+          'bg-gradient-to-b from-[#f4f4f5b0] invert': theme == 'dark',
         },
       )}
     >

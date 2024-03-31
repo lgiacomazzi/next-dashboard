@@ -6,11 +6,11 @@ export default async function Page() {
   const arts = await fetchHomeArts();
 
   return (
-    <body className="overflow-hidden">
+    <>
       <Header theme="dark" />
-      <main className="h-screen overflow-hidden">
+      <main className="h-screen w-screen overflow-hidden">
         <MainCarousel arts={arts} />
       </main>
-    </body>
+    </>
   );
 }
