@@ -74,6 +74,7 @@ export default function PageCarousel({ arts }: any) {
             //   key={index}
             // />
             <div
+              key={index}
               className={clsx('mb-12 snap-center transition md:mb-0', {
                 'opacity-0': index < currentIndex,
               })}
