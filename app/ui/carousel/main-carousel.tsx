@@ -18,7 +18,7 @@ const generateLink = (category: string, year: string): string => {
 
 export function ImageTag({ art }: any) {
   return (
-    <div className="fixed bottom-0 left-0 z-10 w-full bg-zinc-950 p-2.5 text-sm uppercase text-white md:bottom-10 md:left-10 md:w-fit">
+    <div className="fixed bottom-0 left-0 z-10 w-full bg-zinc-950 p-2.5 text-sm uppercase text-white active:opacity-90 md:bottom-10 md:left-10 md:w-fit">
       <Link href={generateLink(art.category, art.year)}>
         <span className="opacity-60">
           {art.title} / {artTranslations[art.category]}
@@ -39,16 +39,13 @@ export function MainCarouselImage({
   currentIndex: number;
 }) {
   return (
-    <Link
-      href={generateLink(art.category, art.year)}
-      className="absolute h-full w-full"
-    >
+    <Link href={generateLink(art.category, art.year)}>
       <Image
         src={art.image_url}
         alt={art.title}
         priority={index === 0}
         className={clsx(
-          'h-full w-full object-cover object-center opacity-0 transition',
+          'h-full w-full object-cover object-center opacity-0 transition focus:scale-125',
           {
             'scale-105 opacity-100': index === currentIndex,
           },
@@ -83,11 +80,11 @@ export const MainCarousel = ({ arts }: { arts: Art[] }) => {
   };
 
   return (
-    <div className="carousel h-full w-full bg-black">
+    <div className="h-screen w-screen bg-black">
       <CarouselButton direction="left" onClick={goToPrevious} />
       <CarouselButton direction="right" onClick={goToNext} />
       <ImageTag art={arts[currentIndex]} />
-      <div className="relative h-full w-full overflow-hidden">
+      <div className="relative h-full w-full">
         {arts &&
           arts.map((art: Art, index: number) => (
             <MainCarouselImage

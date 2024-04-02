@@ -21,7 +21,8 @@ export function ArtDisplay({ art }: any) {
       <div className="p-4 text-xs md:px-0">
         <p className="font-bold uppercase">{art.title}</p>
         <p>
-          {art.description}, {art.dimensions}, {art.year}
+          {art.description} {art.dimensions && `, ${art.dimensions}`}
+          {art.year && `, ${art.year}`}
         </p>
       </div>
     </div>
@@ -63,9 +64,9 @@ export default function PageCarousel({ arts }: any) {
   }, [arts]);
 
   return (
-    <div className="flex snap-mandatory flex-col overflow-hidden pt-32 md:h-screen md:flex-row md:gap-8 md:px-10">
-      <CarouselButton direction="left" onClick={() => navigate('left')} />
-      <CarouselButton direction="right" onClick={() => navigate('right')} />
+    <div className="flex snap-mandatory flex-col overflow-hidden pt-24 md:h-screen md:flex-row md:gap-8 md:px-32 md:pt-32">
+      {/* <CarouselButton direction="left" onClick={() => navigate('left')} /> */}
+      {/* <CarouselButton direction="right" onClick={() => navigate('right')} /> */}
       {arts.length > 0
         ? arts.map((art: Art, index: number) => (
             // <ArtDisplay
@@ -76,22 +77,24 @@ export default function PageCarousel({ arts }: any) {
             <div
               key={index}
               className={clsx('mb-12 snap-center transition md:mb-0', {
-                'opacity-0': index < currentIndex,
+                // 'opacity-80': index < currentIndex,
               })}
               ref={(el) => (itemRefs.current[index] = el)}
             >
               <Image
                 src={art.image_url}
                 alt={art.description}
-                className="w-full bg-slate-200 object-cover object-center md:h-[60vh] md:max-h-fit md:w-fit md:max-w-fit"
+                className="w-fit bg-slate-200 object-cover object-center md:h-[60vh] md:max-h-fit md:max-w-fit"
                 width={1920}
                 height={1080}
                 priority
               />
-              <div className="p-4 text-xs md:px-0">
+              <div className="w-3/4 p-4 text-xs md:px-0">
                 <p className="font-bold uppercase">{art.title}</p>
                 <p>
-                  {art.description}, {art.dimensions}, {art.year}
+                  {art.description}
+                  {art.dimensions && ` [${art.dimensions}]`}
+                  {art.year && ` - ${art.year}`}
                 </p>
               </div>
             </div>

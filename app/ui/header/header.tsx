@@ -19,7 +19,7 @@ export default async function Header({ theme }: { theme: 'light' | 'dark' }) {
   return (
     <header
       className={clsx(
-        'fixed z-10 flex w-full items-center justify-between p-5',
+        'fixed z-10 flex w-screen items-center justify-between p-5',
         {
           'bg-gradient-to-b from-[#f4f4f5b0] invert': theme == 'dark',
         },

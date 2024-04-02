@@ -6,7 +6,7 @@ export function CarouselButton({ direction, onClick }: any) {
     <button
       onClick={onClick}
       className={clsx(
-        'fixed bottom-1/2 z-10 hidden bg-zinc-950 p-4 text-sm text-white md:block',
+        'fixed bottom-1/2 z-10 hidden bg-zinc-950 p-4 text-sm text-white active:opacity-90 md:block',
         {
           'right-10': direction == 'right',
         },
