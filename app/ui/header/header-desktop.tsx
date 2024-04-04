@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 import Instagram from '@/public/instagram.svg';
+import Arrow from '@/public/arrow.svg';
 
 export function DesktopDropdown({
   category,
@@ -18,7 +19,7 @@ export function DesktopDropdown({
   const selectedYear = usePathname().split('/')[2];
 
   return (
-    <div className="dropdown text-sm">
+    <div className="flex flex-col items-center text-sm">
       <button
         className="border-b border-transparent uppercase hover:border-black"
         onClick={() => setIsDropdownVisible(!isDropdownVisible)}
@@ -27,7 +28,8 @@ export function DesktopDropdown({
         {selectedYear && `/${selectedYear}`}
       </button>
       {isDropdownVisible && (
-        <div className="absolute flex flex-col gap-2 bg-zinc-950 p-4 text-center text-white">
+        <div className="absolute mt-8 flex flex-col items-center gap-2 bg-zinc-950 px-8 py-3 text-white">
+          <Arrow className="absolute mt-[-28px] w-4 text-zinc-950" />
           {years.map((year) => (
             <Link
               href={`/painting/${year}`}

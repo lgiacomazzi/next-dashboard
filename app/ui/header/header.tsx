@@ -14,7 +14,7 @@ export function MainLogo() {
 }
 
 export default async function Header({ theme }: { theme: 'light' | 'dark' }) {
-  const categories = await fetchCategories(); // Mover para usar no header do mobile
+  const categories = await fetchCategories();
 
   return (
     <header

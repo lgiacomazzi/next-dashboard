@@ -50,7 +50,7 @@ export default function MobileMenu({ categories }: { categories: Category[] }) {
         <div className="flex justify-end p-5">
           {/* <MainLogo /> */}
           <button
-            className="h-16"
+            className="h-12"
             onClick={() => setIsMenuVisible(!isMenuVisible)}
           >
             <XMarkIcon className="h-6 w-6" />

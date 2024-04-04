@@ -74,7 +74,7 @@ export async function fetchHomeArts() {
       FROM arts
       WHERE image_url NOT LIKE '/arts/'
       ORDER BY year DESC
-      LIMIT 15
+      LIMIT 10
     `;
 
     const arts = data.rows;
@@ -98,7 +98,7 @@ export async function fetchCategories() {
     `;
 
     const categories = data.rows;
-    console.log(categories);
+    // console.log(categories);
     return categories;
   } catch (err) {
     console.error('Database Error:', err);
