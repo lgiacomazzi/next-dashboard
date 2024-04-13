@@ -30,15 +30,15 @@ const nextConfig = {
   
       return config
     },
-    // images: {
-    //   remotePatterns: [
-    //     {
-    //       protocol: 'https',
-    //       hostname: 'drive.google.com',
-    //       port: '',
-    //     },
-    //   ],
-    // },
+    images: {
+      remotePatterns: [
+        {
+          protocol: 'https',
+          hostname: 'drive.google.com',
+          port: '',
+        },
+      ],
+    },
     // ...other config
   }
 
