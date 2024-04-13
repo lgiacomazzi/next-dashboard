@@ -1,7 +1,7 @@
 'use client';
 
-import { Category } from '@/app/lib/definitions';
-import { artTranslations } from '@/app/lib/utils';
+import { Category } from '@/lib/definitions';
+import { categoryTranslations } from '@/lib/utils';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
@@ -16,6 +16,8 @@ export function DesktopDropdown({
   years: string[];
 }) {
   const [isDropdownVisible, setIsDropdownVisible] = useState(false);
+
+  const selectedCategory = usePathname().split('/')[1];
   const selectedYear = usePathname().split('/')[2];
 
   return (
@@ -24,15 +26,15 @@ export function DesktopDropdown({
         className="border-b border-transparent uppercase hover:border-black"
         onClick={() => setIsDropdownVisible(!isDropdownVisible)}
       >
-        {artTranslations[category]}
-        {selectedYear && `/${selectedYear}`}
+        {categoryTranslations[category]}
+        {category === selectedCategory && `/${selectedYear}`}
       </button>
       {isDropdownVisible && (
         <div className="absolute mt-8 flex flex-col items-center gap-2 bg-zinc-950 px-8 py-3 text-white">
           <Arrow className="absolute mt-[-28px] w-4 text-zinc-950" />
           {years.map((year) => (
             <Link
-              href={`/painting/${year}`}
+              href={`/${category}/${year}`}
               key={year}
               onClick={() => setIsDropdownVisible(false)}
             >
@@ -59,7 +61,7 @@ export default function DesktopNavBar({
             href={`/${category.name}`}
             className="border-b border-transparent text-sm uppercase hover:border-black"
           >
-            {artTranslations[category.name]}
+            {categoryTranslations[category.name]}
           </Link>
         ) : (
           <DesktopDropdown
@@ -69,6 +71,12 @@ export default function DesktopNavBar({
           />
         ),
       )}
+      <Link
+        href="/bio"
+        className="border-b border-transparent text-sm uppercase hover:border-black"
+      >
+        Bio
+      </Link>
       <Link className="w-4" href="https://www.instagram.com/joanasbrum/">
         <Instagram className="h-4 w-4" />
       </Link>

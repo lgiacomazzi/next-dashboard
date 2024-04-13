@@ -1,9 +1,8 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {};
 
-module.exports = nextConfig;
+import withPlaiceholder from '@plaiceholder/next'
 
-module.exports = {
+const nextConfig = {
     webpack(config) {
       // Grab the existing rule that handles SVG imports
       const fileLoaderRule = config.module.rules.find((rule) =>
@@ -31,6 +30,16 @@ module.exports = {
   
       return config
     },
-  
+    images: {
+      remotePatterns: [
+        {
+          protocol: 'https',
+          hostname: 'drive.google.com',
+          port: '',
+        },
+      ],
+    },
     // ...other config
   }
+
+  export default withPlaiceholder(nextConfig)

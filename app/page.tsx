@@ -1,6 +1,6 @@
-import Header from '@/app/ui/header/header';
-import { fetchHomeArts } from '@/app/lib/data';
-import { MainCarousel } from '@/app/ui/carousel/main-carousel';
+import Header from '@/components/header/header';
+import { fetchHomeArts } from '@/lib/data';
+import { MainCarousel } from '@/components/carousel/main-carousel';
 
 export default async function Page() {
   const arts = await fetchHomeArts();

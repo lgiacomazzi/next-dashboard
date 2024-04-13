@@ -1,9 +1,9 @@
-import Header from '../ui/header/header';
+import Header from '../../components/header/header';
 
 export default async function Bio() {
   return (
     <>
-      <Header theme="light" />
+      <Header />
       <main className="pt-20">
         <p>Bio Page</p>
       </main>
