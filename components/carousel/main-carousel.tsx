@@ -35,15 +35,6 @@ export function ImageTag({ art }: { art: Art }) {
 
 export function MainCarousel({ arts }: MainCarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [speed, setSpeed] = useState(6000);
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      goToNext();
-    }, 4000);
-    // Clear the interval on component unmount
-    return () => clearInterval(timer);
-  }, [currentIndex]); // Dependency array ensures the interval is reset if currentIndex changes
 
   const goToPrevious = () => {
     const isFirstItem = currentIndex === 0;
@@ -56,6 +47,13 @@ export function MainCarousel({ arts }: MainCarouselProps) {
     const newIndex = isLastItem ? 0 : currentIndex + 1;
     setCurrentIndex(newIndex);
   };
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      goToNext();
+    }, 4000);
+    return () => clearInterval(timer);
+  }, [currentIndex]);
 
   return (
     <div className="h-screen w-screen bg-black">
