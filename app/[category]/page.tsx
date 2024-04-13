@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import { fetchCategoryArts } from '@/lib/data';
 import { Metadata, ResolvingMetadata } from 'next';
 import { categoryTranslations } from '@/lib/utils';

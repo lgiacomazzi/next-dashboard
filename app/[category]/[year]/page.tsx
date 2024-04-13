@@ -15,15 +15,15 @@ type YearlyCategoryPageParams = {
   category: string;
 };
 
-export async function generateMetadata(
-  { params }: { params: YearlyCategoryPageParams },
-  parent: ResolvingMetadata,
-): Promise<Metadata> {
-  const parentTitle = (await parent).title?.absolute;
-  const title = `${categoryTranslations[params.category]} 
-    ${params.year} - ${parentTitle}`;
-  return { title };
-}
+// export async function generateMetadata(
+//   { params }: { params: YearlyCategoryPageParams },
+//   parent: ResolvingMetadata,
+// ): Promise<Metadata> {
+//   const parentTitle = (await parent).title?.absolute;
+//   const title = `${categoryTranslations[params.category]}
+//     ${params.year} - ${parentTitle}`;
+//   return { title };
+// }
 
 export default async function YearlyCategoryPage({
   params,

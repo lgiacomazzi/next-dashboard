@@ -2,7 +2,6 @@ import '@/components/global.css';
 import { ibm_Plex_Mono } from '../components/fonts';
 import type { Metadata } from 'next';
 import { twMerge } from 'tailwind-merge';
-import Header from '@/components/header/header';
 
 export const metadata: Metadata = {
   title: 'Joana Brum Brasil',
