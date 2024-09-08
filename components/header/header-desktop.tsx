@@ -30,7 +30,7 @@ export function DesktopDropdown({
         {category === selectedCategory && `/${selectedYear}`}
       </button>
       {isDropdownVisible && (
-        <div className="absolute mt-8 flex flex-col items-center gap-2 bg-zinc-950 px-8 py-3 text-white">
+        <div className="absolute z-10 mt-8 flex flex-col items-center gap-2 bg-zinc-950 px-8 py-3 text-white">
           <Arrow className="absolute mt-[-28px] w-4 text-zinc-950" />
           {years.map((year) => (
             <Link

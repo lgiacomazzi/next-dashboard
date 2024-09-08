@@ -8,6 +8,7 @@ export function cn(...inputs: ClassValue[]) {
 export const categoryTranslations: { [key: string]: string } = {
   painting: 'Pinturas',
   drawing: 'Desenhos',
+  digital: 'Digital',
   illustration: 'Ilustrações',
   collage: 'Colagens',
 };

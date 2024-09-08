@@ -15,8 +15,8 @@ export default async function Header({ theme }: HeaderProps) {
   return (
     <header
       className={twMerge(
-        'fixed z-20 flex w-screen items-center justify-between p-5',
-        theme == 'dark' && 'bg-gradient-to-b from-[#f4f4f5b0] invert',
+        'z-20 flex w-screen items-center justify-between p-5',
+        theme == 'dark' && 'fixed bg-gradient-to-b from-[#f4f4f5b0] invert',
       )}
     >
       <Link href="/">

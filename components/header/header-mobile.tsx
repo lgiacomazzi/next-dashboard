@@ -33,7 +33,7 @@ export default function MobileMenu({ categories }: { categories: Category[] }) {
       </button>
       <div
         className={twMerge(
-          'left-0 top-0 h-screen w-full overflow-y-scroll bg-black/[.95] pb-20',
+          'left-0 top-0 z-10 h-screen w-full overflow-y-scroll bg-black/[.95] pb-20',
           open === false && 'hidden',
           open === true && 'fixed',
         )}

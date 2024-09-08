@@ -2,7 +2,7 @@ const { db } = require('@vercel/postgres');
 
 const {
   arts
-} = require('../app/lib/placeholder-data-arts.js');
+} = require('../lib/data-arts');
 
 const bcrypt = require('bcrypt');
 

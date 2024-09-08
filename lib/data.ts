@@ -111,7 +111,7 @@ export async function fetchCategories() {
     `;
 
     const categories = data.rows;
-    // console.log(categories);
+    console.log(categories);
     return categories;
   } catch (err) {
     console.error('Database Error:', err);
