@@ -23,5 +23,6 @@ export async function BlurImage(props: BlurImageProps) {
   // const { base64 } = await getPlaiceholder(buffer);
   //   console.log('>', base64);
 
-  return <Image blurDataURL={base64} placeholder="blur" {...props} />;
+  return <Image {...props} />;
+  // return <Image blurDataURL={base64} placeholder="blur" {...props} />;
 }

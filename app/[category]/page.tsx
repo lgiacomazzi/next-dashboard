@@ -35,7 +35,6 @@ export default async function CategoryPage({
             width={500}
             height={500}
             // blurDataURL={generateBlurPlaceholder(art.image_url)}
-            placeholder="blur"
           />
           <div className="pt-2 text-xs">
             <p className="text-zinc-600">{art.year && `${art.year}`}</p>
